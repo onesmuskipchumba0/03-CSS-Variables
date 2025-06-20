@@ -43,13 +43,31 @@
     input {
       width: 100px;
     }
+
+    img{
+      padding: 20px;
+      transition: padding 0.3s ease;
+    }
   </style>
 
   <script>
     const spacing  = document.querySelector(`input[name="spacing"]`);
     const blur = document.querySelector(`input[name="blur"]`);
+    const image = document.querySelector("img");
+    const base = document.getElementById("base");
+    image.style.backgroundColor = `${base.value}`;
 
-    spacing.addEventListener("change", (e) => { console.log(e.target.value) })
+    base.addEventListener("input", (e) => {
+      image.style.backgroundColor = `${e.target.value}`;
+    })
+
+    spacing.addEventListener("input", (e) => { 
+      image.style.padding = `${e.target.value}px`;
+    })
+    blur.addEventListener("input", (e) => { 
+      image.style.filter = `blur(${e.target.value}px)`
+    })
+
   </script>
 
 </body>
